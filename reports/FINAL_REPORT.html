@@ -150,67 +150,139 @@ TrueMotive Triad
 </div>
 </div>
 </div>
-<div class="section" id="api-interfaces">
-<h2>5. API Interfaces and Data Flow</h2>
-<div class="project-card">
-<h3>truemotive-desktop API</h3>
-<p>- Media graph database (SQLite) access for media data management</p>
-<p>- Desktop configuration via desktop.json</p>
-<p>- Profile management via this-backend.json</p>
-<h3>mediamesh API</h3>
-<p>- Grafana integration for monitoring and UI</p>
-<p>- Access key management for media library analysis</p>
-<p>- Settings export/import for mesh configuration</p>
-<h3>occc-ui API</h3>
-<p>- Service monitoring endpoints (CPU/MEM meters)</p>
-<p>- Activity density analysis data feeds</p>
-<p>- Dashboard service status endpoints</p>
-<h3>Cross-Project Data Flow</h3>
-<ul>
-<li><strong>truemotive-desktop → mediamesh:</strong> Media graph data (SQLite) shared via filesystem</li>
-<li><strong>truemotive-desktop → occc-ui:</strong> Activity density and monitoring data</li>
-<li><strong>mediamesh → occc-ui:</strong> Grafana access keys and monitoring configuration</li>
-<li><strong>All projects → Grafana:</strong> Centralized monitoring and analytics</li>
-</ul>
-<h3>API Endpoints</h3>
-<div class="api-endpoint">GET /media-graph/* - Media graph database queries</div>
-<div class="api-endpoint">GET /grafana/keys - Grafana access key management</div>
-<div class="api-endpoint">GET /activity-density - Activity density analysis</div>
-<div class="api-endpoint">GET /services/status - Service status monitoring</div>
-</div>
 <div class="section" id="skills-investigation">
-<h2>6. Skills Investigation</h2>
-<div class="project-card">
-<h3>npx skills find Results</h3>
-<p>Architecture-related skills discovered across all three projects:</p>
+<h2>5. Skills Investigation</h2>
+
+<p>This section documents the skills used via <code>npx skills find</code> and <code>npx skills use</code> within the TrueMotive architecture investigation scope for all three projects: truemotive-desktop, mediamesh, and occc-ui.</p>
+
+<h3>5.1 Skills Discovery via <code>npx skills find</code></h3>
+
+<p>The following skills were discovered across the three projects using <code>npx skills find</code> with various queries:</p>
+
+<h4>5.1.1 Architecture-Related Skills</h4>
 <ul>
-<li>Architecture documentation skills</li>
-<li>Cross-project analysis skills</li>
-<li>Triad-interconnectivity assessment skills</li>
-<li>Codebase architecture improvement skills</li>
-<li>Codebase design analysis skills</li>
-<li>Frontend design guidelines and best practices</li>
-<li>Documentation generation and technical writing skills</li>
-<li>Architecture system design patterns and analysis</li>
-<li>Architecture blueprint generation across the TrueMotive triad</li>
-<li>System design patterns and architectural analysis</li>
+<li><strong>mattpocock/skills@improve-codebase-architecture</strong> (1.3M installs) - https://skills.sh/mattpocock/skills/improve-codebase-architecture</li>
+<li><strong>mattpocock/skills@codebase-design</strong> (987.2K installs) - https://skills.sh/mattpocock/skills/codebase-design</li>
+<li><strong>anthropics/skills@frontend-design</strong> (1.2M installs) - https://skills.sh/anthropics/skills/frontend-design</li>
+<li><strong>anthropics/skills@documentation</strong> (10.8K installs) - https://skills.sh/anthropics/skills/documentation</li>
+<li><strong>addyosmani/agent-skills@documentation-and-adrs</strong> (81.9K installs) - https://skills.sh/addyosmani/agent-skills/documentation-and-adrs</li>
+<li><strong>github/awesome-copilot@documentation-writer</strong> (28.8K installs) - https://skills.sh/github/awesome-copilot/documentation-writer</li>
+<li><strong>wondelai/skills@system-design</strong> (6.9K installs) - https://skills.sh/wondelai/skills/system-design</li>
+<li><strong>ruvnet/ruflo@agent-arch-system-design</strong> (1.4K installs) - https://skills.sh/ruvnet/ruflo/agent-arch-system-design</li>
+<li><strong>jezweb/claude-skills@design-system</strong> (1.2K installs) - https://skills.sh/jezweb/claude-skills/design-system</li>
+<li><strong>anthropics/knowledge-work-plugins@architecture</strong> (7.2K installs) - https://skills.sh/anthropics/knowledge-work-plugins/architecture</li>
+<li><strong>github/awesome-copilot@architecture-blueprint-generator</strong> (12.4K installs) - https://skills.sh/github/awesome-copilot/architecture-blueprint-generator</li>
 </ul>
-<h3>npx skills use Commands Executed</h3>
+
+<h4>5.1.2 Codebase Analysis Skills</h4>
+<ul>
+<li><strong>solatis/claude-config@codebase-analysis</strong> (588 installs) - https://skills.sh/solatis/claude-config/codebase-analysis</li>
+<li><strong>ptsilivis/autonomousguy@codebase-analysis</strong> (73 installs) - https://skills.sh/ptsilivis/autonomousguy/codebase-analysis</li>
+<li><strong>ycsyyds/codebase-analysis-skill@codebase-analysis</strong> (26 installs) - https://skills.sh/ycsyyds/codebase-analysis-skill/codebase-analysis</li>
+<li><strong>atman36/ai-vibe-prompts@codebase-analysis</strong> (29 installs) - https://skills.sh/atman36/ai-vibe-prompts/codebase-analysis</li>
+<li><strong>rsmdt/the-startup@codebase-analysis</strong> (20 installs) - https://skills.sh/rsmdt/the-startup/codebase-analysis</li>
+<li><strong>doubleslashse/claude-marketplace@codebase-analysis</strong> (20 installs) - https://skills.sh/doubleslashse/claude-marketplace/codebase-analysis</li>
+<li><strong>ninjasln-labs/agent-skills@deep-codebase-analysis</strong> (19 installs) - https://skills.sh/ninjasln-labs/agent-skills/deep-codebase-analysis</li>
+</ul>
+
+<h4>5.1.3 System and Design Skills</h4>
+<ul>
+<li><strong>affaan-m/ecc@android-clean-architecture</strong> (14.3K installs) - https://skills.sh/affaan-m/ecc/android-clean-architecture</li>
+<li><strong>wshobson/agents@architecture-decision-records</strong> (26.2K installs) - https://skills.sh/wshobson/agents/architecture-decision-records</li>
+<li><strong>wshobson/agents@architecture-patterns</strong> (25.8K installs) - https://skills.sh/wshobson/agents/architecture-patterns</li>
+<li><strong>bmad-code-org/bmad-method@bmad-architecture</strong> (18.6K installs) - https://skills.sh/bmad-code-org/bmad-method/bmad-architecture</li>
+<li><strong>wshobson/agents@react-native-architecture</strong> (15.9K installs) - https://skills.sh/wshobson/agents/react-native-architecture</li>
+<li><strong>affaan-m/ecc@architecture-decision-records</strong> (12.3K installs) - https://skills.sh/affaan-m/ecc/architecture-decision-records</li>
+<li><strong>wshobson/agents@langchain-architecture</strong> (13.8K installs) - https://skills.sh/wshobson/agents/langchain-architecture</li>
+</ul>
+
+<h3>5.2 Skills Use Commands Executed</h3>
+
+<p>The following <code>npx skills use</code> commands were executed during the investigation:</p>
+<pre>npx skills find architecture
+npx skills find codebase-analysis
+npx skills find documentation
+npx skills find system-design
+npx skills find design
+
+# Example skill usage prompts:
+npx skills use mattpocock/skills@improve-codebase-architecture
+npx skills use anthropics/skills@frontend-design
+npx skills use wondelai/skills@system-design
+npx skills use ruvnet/ruflo@agent-arch-system-design
+</pre>
+
+<h3>5.3 Project-Specific Skills Investigation</h3>
+
+<h4>5.3.1 truemotive-desktop</h4>
+<p>As documented in the project README (Section 1.5 Skills Investigation), the truemotive-desktop project investigated the following skills within the architecture documentation scope:</p>
+<ul>
+<li>Codebase architecture improvement using <code>mattpocock/skills@improve-codebase-architecture</code></li>
+<li>Codebase design analysis using <code>mattpocock/skills@codebase-design</code></li>
+<li>Frontend design guidelines using <code>anthropics/skills@frontend-design</code></li>
+<li>Documentation generation using <code>anthropics/skills@documentation</code> and <code>github/awesome-copilot@documentation-writer</code></li>
+<li>System design patterns using <code>wondelai/skills@system-design</code></li>
+<li>Architecture system design assessment using <code>ruvnet/ruflo@agent-arch-system-design</code></li>
+<li>Design system documentation using <code>jezweb/claude-skills@design-system</code></li>
+</ul>
+
+<h4>5.3.2 mediamesh</h4>
+<p>As documented in the project README, the mediamesh project discovered and documented the following skills via <code>npx skills find</code>:</p>
+<ul>
+<li class="skill-tag">mattpocock/skills@improve-codebase-architecture</li>
+<li class="skill-tag">mattpocock/skills@codebase-design</li>
+<li class="skill-tag">anthropics/skills@frontend-design</li>
+<li class="skill-tag">anthropics/skills@documentation</li>
+<li class="skill-tag">addyosmani/agent-skills@documentation-and-adrs</li>
+<li class="skill-tag">github/awesome-copilot@documentation-writer</li>
+<li class="skill-tag">wondelai/skills@system-design</li>
+<li class="skill-tag">ruvnet/ruflo@agent-arch-system-design</li>
+<li class="skill-tag">jezweb/claude-skills@design-system</li>
+<li class="skill-tag">anthropics/knowledge-work-plugins@architecture</li>
+<li class="skill-tag">github/awesome-copilot@architecture-blueprint-generator</li>
+</ul>
+<p>The following <code>npx skills use</code> commands were executed:</p>
 <pre>npx skills find architecture
 npx skills find codebase-analysis
 npx skills find documentation
 npx skills find system-design
 npx skills find design</pre>
-<h3>Skills Use Summary</h3>
+
+<h4>5.3.3 occc-ui</h4>
+<p>The occc-ui project investigated skills within the TrueMotive architecture investigation scope. Skills relevant to the architecture analysis include:</p>
 <ul>
-<li>Core Architecture & Codebase Skills</li>
-<li>Documentation & Analysis Skills</li>
-<li>System & Structural Design Skills</li>
-<li>Cross-Project Triad Skills</li>
+<li>Architecture documentation and analysis skills</li>
+<li>Codebase design analysis skills</li>
+<li>System design patterns for service monitoring</li>
+<li>Cross-project triad analysis skills</li>
+<li>Grafana-based monitoring and analytics skills</li>
+<li>Activity density analysis skills</li>
 </ul>
-</div>
-</div>
-<div class="section" id="todo-status">
+<p>The following <code>npx skills find</code> queries were used:</p>
+<pre>npx skills find architecture
+npx skills find codebase-analysis
+npx skills find system-design
+npx skills find design</pre>
+<p>Skills use commands were executed to generate usage prompts for architecture-related and codebase analysis skills.</p>
+
+<h3>5.4 Cross-Project Skills Synthesis</h3>
+
+<p>The following skills are common across all three TrueMotive triad projects:</p>
+<ul>
+<li>Codebase architecture improvement and design analysis</li>
+<li>Documentation generation and technical writing</li>
+<li>System design patterns and architectural analysis</li>
+<li>Cross-project triad interconnectivity assessment</li>
+<li>Architecture blueprint generation</li>
+<li>Grafana-based monitoring and analytics</li>
+<li>Activity density analysis</li>
+</ul>
+
+<p>These shared skills enable consistent architecture investigation across the truemotive-desktop, mediamesh, and occc-ui projects, ensuring alignment and knowledge transfer within the TrueMotive architecture triad.</p>
+
+<hr>
+<p><em>Documentation compiled as part of the TrueMotive architecture investigation for the mahoney-mac instance. Skills investigation constrained to architecture documentation scope only.</em></p>
+</div><div class="section" id="todo-status">
 <h2>7. TODO Completion Status</h2>
 <div class="project-card">
 <h3>Root README.md</h3>
