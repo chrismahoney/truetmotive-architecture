@@ -2,37 +2,31 @@
 
 ## Project Overview
 
-The truemotive-desktop project is a desktop application for TrueMotive, focused on 
-media management and analysis. This project appears to be configured in 
-`/Users/chris/.config/truemotive-desktop/`.
+The truemotive-desktop project is the first component of the TrueMotive architecture, 
+documented within the architecture worktree. This project was investigated as part of 
+the architecture documentation task, with findings cross-referenced against the other 
+two projects (mediamesh, occc-ui).
 
-### Key Files and Directories
+### Project Context
 
-- `/Users/chris/.config/truemotive-desktop/desktop.json` - Desktop configuration
-- `/Users/chris/.config/truemotive-desktop/audit.log` - Audit log (47KB)
-- `/Users/chris/.config/truemotive-desktop/audit.log` - Contains audit trail
-- `/Users/chris/.config/truemotive-desktop/cleanup/` - Cleanup operations
-- `/Users/chris/.config/truemotive-desktop/media-graph/` - Media graph database
-  - `media-graph.sqlite` - SQLite database for media graph data
-- `/Users/chris/.config/truemotive-desktop/profiles/` - Project profiles
-  - `this-backend.json` - Backend profile configuration
+- Documented within: `architecture/instances/mahoney-mac/code/truemotive-desktop/`
+- Part of the TrueMotive architecture triad (alongside mediamesh and occc-ui)
+- Investigation focused on architecture-level understanding, not source code review
+- Key analysis types captured in HANDOFF_INVESTIGATE_CODE.md
 
-### Reported Analyses
+### Documentation Artifacts
 
-The project has undergone various analyses stored in the `.truemotive` directory:
-- activity-density-analysis
-- built-in-docs
-- grafana-access-keys
-- media-library-analysis
-- rist-preview-node-analysis
-- ristgo-analysis
+- Local README: `architecture/instances/mahoney-mac/code/truemotive-desktop/README.md`
+- Cross-reference: `HANDOFF_INVESTIGATE_CODE.md` for detailed project findings
+- Architecture context: Documentation of how this project fits the TrueMotive triad
 
-### Skills and Tools
+### Skills Investigation
 
-TODO: Document skills used and relevant findings.
+TODO: Document skills used via `npx skills find` and `npx skills use` within 
+the architecture investigation scope.
 
 ### TODO
 
-- [ ] Investigate code structure and architecture
-- [ ] Document code review findings
-- [ ] Add skills investigation results
+- [ ] Investigate code structure within architecture documentation scope
+- [ ] Document code review findings constrained to architecture relevance
+- [ ] Add skills investigation results relevant to the TrueMotive triad

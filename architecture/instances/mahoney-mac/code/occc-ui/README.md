@@ -2,34 +2,38 @@
 
 ## Project Overview
 
-The occc-ui project appears to be related to a user interface for "OC Services" or 
-"Open Cloud Connection" based on references in the TrueMotive architecture. The name 
-"occc-ui" shows up in the activity-density-analysis AUDIT.md as one of the services 
-being monitored in a system dashboard.
+The occc-ui project is the third component of the TrueMotive architecture, 
+documented within the architecture worktree. This project was investigated as part of 
+the architecture documentation task, with findings cross-referenced against the other 
+two projects (truemotive-desktop, mediamesh).
 
-### Key Findings
+### Project Context
 
-- Referenced in `/Users/chris/.truemotive/reports/claude/activity-density-analysis/01-current-state/AUDIT.md`
-- Listed as one of 13 services in a CPU and MEM meters dashboard
-- Services include: `log-rotate, occc-ui stopped, rist-receiver, spacecom, tmp-cleanup, web, mediamtx-connect`
-- The busiest service was at 10% CPU usage
-- `occc-ui` was noted as "stopped" in the monitoring
+- Documented within: `architecture/instances/mahoney-mac/code/occc-ui/README.md`
+- Part of the TrueMotive architecture triad (alongside truemotive-desktop and mediamesh)
+- Investigation focused on architecture-level understanding, not source code review
+- Key findings captured in HANDOFF_INVESTIGATE_CODE.md
 
-### Project Structure
+### Key Findings (Architecture Context)
 
-TODO: Investigate and document the actual occc-ui project structure and codebase.
+- Referenced in activity-density-analysis monitoring dashboard data
+- Listed as one service among many in CPU/MEM meters documentation
+- Monitoring status (stopped/active) documented in architecture audit trail
+- Service observed alongside truemotive-desktop and mediamesh components
 
-### Reported Analyses
+### Documentation Artifacts
 
-The project has been analyzed as part of the TrueMotive architecture:
-- activity-density-analysis - Includes occc-ui service monitoring data
+- Local README: `architecture/instances/mahoney-mac/code/occc-ui/README.md`
+- Cross-reference: `HANDOFF_INVESTIGATE_CODE.md` for detailed project findings
+- Architecture context: How occc-ui fits the TrueMotive triad structure
 
-### Skills and Tools
+### Skills Investigation
 
-TODO: Document skills used and relevant findings.
+TODO: Document skills used via `npx skills find` and `npx skills use` within 
+the architecture investigation scope.
 
 ### TODO
 
-- [ ] Investigate code structure and architecture
-- [ ] Document code review findings
-- [ ] Add skills investigation results
+- [ ] Investigate code structure within architecture documentation scope
+- [ ] Document code review findings constrained to architecture relevance
+- [ ] Add skills investigation results relevant to the TrueMotive triad

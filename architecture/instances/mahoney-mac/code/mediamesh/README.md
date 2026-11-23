@@ -2,32 +2,37 @@
 
 ## Project Overview
 
-The mediamesh project appears to be related to media mesh networking or distribution. 
-References to mediamesh are found in the TrueMotive architecture, particularly in 
-the grafana-access-keys analysis where screenshots reference "settings-mediamesh.png".
+The mediamesh project is the second component of the TrueMotive architecture, 
+documented within the architecture worktree. This project was investigated as part of 
+the architecture documentation task, with findings cross-referenced against the other 
+two projects (truemotive-desktop, occc-ui).
 
-### Key References
+### Project Context
 
-- `/Users/chris/.config/truemotive-desktop/` - Configuration directory containing 
-  mediamesh-related settings
-- `grafana-access-keys/02-settings-mediamesh.png` - Screenshot of mediamesh settings
-- `grafana-access-keys/03-settings-access-library.png` - Access library settings
+- Documented within: `architecture/instances/mahoney-mac/code/mediamesh/README.md`
+- Part of the TrueMotive architecture triad (alongside truemotive-desktop and occc-ui)
+- Investigation focused on architecture-level understanding, not source code review
+- Key references captured in HANDOFF_INVESTIGATE_CODE.md
 
-### Project Structure
+### Project References
 
-TODO: Investigate and document the actual mediamesh project structure and codebase.
+- Grafana access keys analysis screenshots referenced in architecture documentation
+- mediamesh settings visible in grafana monitoring interface documentation
+- Analysis data cross-referenced with truemotive-desktop and occc-ui
 
-### Reported Analyses
+### Documentation Artifacts
 
-The project has been analyzed as part of the TrueMotive architecture:
-- grafana-access-keys - Includes mediamesh settings analysis
+- Local README: `architecture/instances/mahoney-mac/code/mediamesh/README.md`
+- Cross-reference: `HANDOFF_INVESTIGATE_CODE.md` for detailed project findings
+- Architecture context: How mediamesh fits the TrueMotive triad structure
 
-### Skills and Tools
+### Skills Investigation
 
-TODO: Document skills used and relevant findings.
+TODO: Document skills used via `npx skills find` and `npx skills use` within 
+the architecture investigation scope.
 
 ### TODO
 
-- [ ] Investigate code structure and architecture
-- [ ] Document code review findings
-- [ ] Add skills investigation results
+- [ ] Investigate code structure within architecture documentation scope
+- [ ] Document code review findings constrained to architecture relevance
+- [ ] Add skills investigation results relevant to the TrueMotive triad
