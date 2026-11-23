@@ -6,6 +6,7 @@ Each agent turn should:
 1. **Investigate available skills** - Before starting work, check what skills are available via `npx skills find` and `npx skills use` commands to determine the best tools for the task at hand.
 2. **Select appropriate skills** - Choose skills that will help with the Task Objective, or find new ones if needed.
 3. **Document findings** - Capture information about the projects being worked on, including architecture, instances, and relevant code reviews.
+4. **Keep TrueMotive instance info in architecture/** - We keep all info related to TrueMotive instances in our architecture/ root directory.
 
 ## Task Objective
 
