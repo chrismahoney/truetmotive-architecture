@@ -42,7 +42,6 @@ The TrueMotive architecture consists of three main projects that interact throug
 
 - [ ] Create detailed architecture diagrams showing project interactions
 - [ ] Investigate code repositories for each project
-- [ ] Document skills used via npx skills find/npx skills use
 - [ ] Add code review findings for each project
 - [ ] Create inter-connectivity maps between the three projects
 - [ ] Document API interfaces and data flow between projects

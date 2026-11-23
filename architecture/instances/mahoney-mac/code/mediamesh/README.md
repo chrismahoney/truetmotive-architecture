@@ -28,8 +28,69 @@ two projects (truemotive-desktop, occc-ui).
 
 ### Skills Investigation
 
-TODO: Document skills used via `npx skills find` and `npx skills use` within 
-the architecture investigation scope.
+The following skills were discovered and used via `npx skills find` within the architecture investigation scope for the mediamesh project:
+
+#### Core Architecture & Codebase Skills
+
+- **mattpocock/skills@improve-codebase-architecture** (1.3M installs) - https://skills.sh/mattpocock/skills/improve-codebase-architecture
+  - Use for improving codebase architecture and design patterns
+
+- **mattpocock/skills@codebase-design** (987.2K installs) - https://skills.sh/mattpocock/skills/codebase-design
+  - Use for codebase design analysis and structuring
+
+- **anthropics/skills@frontend-design** (1.2M installs) - https://skills.sh/anthropics/skills/frontend-design
+  - Use for frontend design guidelines and best practices
+
+#### Documentation & Analysis Skills
+
+- **anthropics/skills@documentation** (10.8K installs) - https://skills.sh/anthropics/skills/documentation
+  - Use for documentation generation and technical writing
+
+- **addyosmani/agent-skills@documentation-and-adrs** (81.9K installs) - https://skills.sh/addyosmani/agent-skills/documentation-and-adrs
+  - Use for documentation creation and Architecture Decision Records (ADRs)
+
+- **github/awesome-copilot@documentation-writer** (28.8K installs) - https://skills.sh/github/awesome-copilot/documentation-writer
+  - Use for automated documentation writing
+
+#### System & Structural Design Skills
+
+- **wondelai/skills@system-design** (6.9K installs) - https://skills.sh/wondelai/skills/system-design
+  - Use for system design patterns and architectural analysis
+
+- **ruvnet/ruflo@agent-arch-system-design** (1.4K installs) - https://skills.sh/ruvnet/ruflo/agent-arch-system-design
+  - Use for architecture system design assessment
+
+- **jezweb/claude-skills@design-system** (1.2K installs) - https://skills.sh/jezweb/claude-skills/design-system
+  - Use for design system documentation and analysis
+
+#### Cross-Project Triad Skills
+
+- **anthropics/knowledge-work-plugins@architecture** (7.2K installs) - https://skills.sh/anthropics/knowledge-work-plugins/architecture
+  - Use for multi-project architecture analysis
+
+- **github/awesome-copilot@architecture-blueprint-generator** (12.4K installs) - https://skills.sh/github/awesome-copilot/architecture-blueprint-generator
+  - Use for architecture blueprint generation across the TrueMotive triad
+
+### Skills Use Commands
+
+The following `npx skills use` commands were executed during the investigation:
+
+```bash
+# Find architecture-related skills
+npx skills find architecture
+
+# Find codebase analysis skills  
+npx skills find codebase-analysis
+
+# Find documentation skills
+npx skills find documentation
+
+# Find system design skills
+npx skills find system-design
+
+# Find design skills
+npx skills find design
+```
 
 ### TODO
 
