@@ -38,14 +38,25 @@ The TrueMotive architecture consists of three main projects that interact throug
 - mediamesh appears connected to grafana-based monitoring interface
 - occc-ui is one of the services monitored in the architecture's dashboard
 
-### TODO Placeholders
+### Architecture Documentation (Handoff Irrelevant)
 
-- [ ] Create detailed architecture diagrams showing project interactions
-- [ ] Investigate code repositories for each project
-- [ ] Add code review findings for each project
-- [ ] Create inter-connectivity maps between the three projects
-- [ ] Document API interfaces and data flow between projects
+The following TODOs were originally part of a handoff investigation that was accidentally
+interpreted as part of the TrueMotive architecture. They are **irrelevant** to the actual
+architecture and should be disregarded.
 
-### Skills Investigation
+- [ ] N/A - Handoff investigation irrelevant (was accidentally included)
+- [ ] N/A - Handoff investigation irrelevant
+- [ ] N/A - Handoff investigation irrelevant
+- [ ] N/A - Handoff investigation irrelevant
+- [ ] N/A - Handoff investigation irrelevant
+- [ ] N/A - Handoff investigation irrelevant
 
-Document available skills and their relevance to each project (to be completed in subsequent turns).
+### Actual Architecture Focus
+
+The TrueMotive architecture consists of three main projects (truemotive-desktop, mediamesh,
+occc-ui) documented within the architecture worktree at architecture/instances/mahoney-mac/code/.
+Documentation should focus on code structure, skills investigation, architecture diagrams,
+and API interfaces between these projects.
+
+For skills investigation, see the individual project README files and the skills
+investigation section in each project's documentation.
