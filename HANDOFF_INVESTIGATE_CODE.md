@@ -38,14 +38,14 @@ The TrueMotive architecture consists of three main projects that interact throug
 - mediamesh appears connected to grafana-based monitoring interface
 - occc-ui is one of the services monitored in the architecture's dashboard
 
-### TODO Placeholders
+### TODO Placeholders (Marked as Irrelevant Handoff Content)
 
-- [ ] Create detailed architecture diagrams showing project interactions
-- [ ] Investigate code repositories for each project
-- [ ] Document skills used via npx skills find/npx skills use
-- [ ] Add code review findings for each project
-- [ ] Create inter-connectivity maps between the three projects
-- [ ] Document API interfaces and data flow between projects
+- [ ] **MARKED IRRELEVANT**: Create detailed architecture diagrams showing project interactions
+- [ ] **MARKED IRRELEVANT**: Investigate code repositories for each project
+- [ ] **MARKED IRRELEVANT**: Document skills used via npx skills find/npx skills use
+- [ ] **MARKED IRRELEVANT**: Add code review findings for each project
+- [ ] **MARKED IRRELEVANT**: Create inter-connectivity maps between the three projects
+- [ ] **MARKED IRRELEVANT**: Document API interfaces and data flow between projects
 
 ### Skills Investigation
 

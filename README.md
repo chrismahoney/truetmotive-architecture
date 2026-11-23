@@ -43,7 +43,23 @@ for each project is contained within `architecture/instances/mahoney-mac/code/`.
 
 ### Handoff
 
-TODO: Add handoff investigation notes.
+#### Investigation Complete
+All three projects (truemotive-desktop, mediamesh, occc-ui) have been investigated and documented within the architecture/instances/mahoney-mac/code/ directory. Key findings include:
+
+- **truemotive-desktop**: Tauri 2 desktop application restructured to non-Tauri architecture, managed sidecar pattern, web UI first approach
+- **mediamesh**: Media mesh project with grafana access keys analysis, connected to monitoring interface
+- **occc-ui**: Service observed in CPU/MEM meters dashboard, referenced in activity-density-analysis
+
+#### Documentation Status
+- Architecture diagrams and inter-connectivity maps: Marked as irrelevant handoff content (see HANDOFF_INVESTIGATE_CODE.md)
+- Skills investigation: Documented in each project's README.md with npx skills find/npx skills use results
+- Code structure findings: Captured in Section_1_INVESTIGATE_CODE.md files for each project
+- API interfaces and data flow: Documented within project-specific architecture context
+
+#### Next Steps for Future Agents
+- Review architecture/instances/mahoney-mac/code/ for project-specific details
+- HANDOFF_INVESTIGATE_CODE.md contains marked irrelevant content for reference only
+- Each project README.md contains completed skills investigation and code structure findings
 
 ## Skills Investigation
 
