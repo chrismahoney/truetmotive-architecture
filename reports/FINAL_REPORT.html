@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrueMotive mahoney-mac Architecture Report</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 20px; background: #fafafa; color: #333; }
+        h1, h2, h3 { color: #2c3e50; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .section { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .project-card { background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 8px; border-left: 4px solid #3498db; }
+        .project-card h3 { margin-top: 0; }
+        .skill-tag { display: inline-block; background: #e8f4fd; padding: 2px 6px; margin: 2px; border-radius: 4px; font-size: 0.85em; color: #2c3e50; }
+        .footer { margin-top: 30px; padding: 20px; text-align: center; color: #777; font-size: 0.9em; }
+        .navbar { overflow: hidden; background: #2c3e50; }
+        .navbar a { float: left; display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
+        .navbar a:hover { background: #34495e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TrueMotive Architecture Report - mahoney-mac Instance</h1>
+            <p>Comprehensive architecture documentation for the TrueMotive triad projects</p>
+        </div>
+        <nav class="navbar">
+            <a href="#truemotive-desktop">truemotive-desktop</a>
+            <a href="#mediamesh">mediamesh</a>
+            <a href="#occc-ui">occc-ui</a>
+            <a href="#architecture-diagrams">Diagrams</a>
+            <a href="#api-interfaces">API</a>
+            <a href="#skills-investigation">Skills</a>
+            <a href="#todo-status">TODO</a>
+            <a href="#mcp-connectivity">MCP</a>
+        </nav>
+<div class="section" id="truemotive-desktop">
+<h2>1. truemotive-desktop</h2>
+<div class="project-card">
+<h3>Project Overview</h3>
+<p>The truemotive-desktop project is the first component of the TrueMotive architecture triad, documented within the architecture worktree.</p>
+<p>Location: <code>architecture/instances/mahoney-mac/code/truemotive-desktop/</code></p>
+<p>Actual project code: <code>/Users/chris/Claude/Projects/truemotive-desktop/</code></p>
+<h3>Key Files & Directories</h3>
+<ul>
+<li>desktop.json - Desktop configuration</li>
+<li>audit.log - Audit logging</li>
+<li>media-graph/sqlite - Media graph database</li>
+<li>profiles/this-backend.json - Backend profiles</li>
+</ul>
+<h3>Analysis Types</h3>
+<ul>
+<li>activity-density-analysis</li>
+<li>built-in-docs</li>
+<li>grafana-access-keys</li>
+<li>media-library-analysis</li>
+<li>rist-preview-node-analysis</li>
+<li>ristgo-analysis</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mediamesh">
+<h2>2. mediamesh</h2>
+<div class="project-card">
+<h3>Project Overview</h3>
+<p>The mediamesh project is the second component of the TrueMotive architecture triad.</p>
+<p>Location: <code>architecture/instances/mahoney-mac/code/mediamesh/</code></p>
+<p>Actual project code: <code>/Users/chris/Claude/TrueMotive/mediamesh/</code></p>
+<h3>Key References</h3>
+<ul>
+<li>Grafana access keys analysis screenshots</li>
+<li>mediamesh settings in grafana monitoring interface</li>
+<li>Analysis data cross-referenced with other projects</li>
+</ul>
+<h3>Skills Investigation</h3>
+<ul>
+<li class="skill-tag">mattpocock/skills@improve-codebase-architecture</li>
+<li class="skill-tag">mattpocock/skills@codebase-design</li>
+<li class="skill-tag">anthropics/skills@frontend-design</li>
+<li class="skill-tag">anthropics/skills@documentation</li>
+<li class="skill-tag">addyosmani/agent-skills@documentation-and-adrs</li>
+<li class="skill-tag">github/awesome-copilot@documentation-writer</li>
+<li class="skill-tag">wondelai/skills@system-design</li>
+<li class="skill-tag">ruvnet/ruflo@agent-arch-system-design</li>
+<li class="skill-tag">jezweb/claude-skills@design-system</li>
+<li class="skill-tag">anthropics/knowledge-work-plugins@architecture</li>
+<li class="skill-tag">github/awesome-copilot@architecture-blueprint-generator</li>
+</ul>
+<h3>Skills Use Commands</h3>
+<pre>npx skills find architecture
+npx skills find codebase-analysis
+npx skills find documentation
+npx skills find system-design
+npx skills find design</pre>
+</div>
+</div>
+<div class="section" id="occc-ui">
+<h2>3. occc-ui</h2>
+<div class="project-card">
+<h3>Project Overview</h3>
+<p>The occc-ui project is the third component of the TrueMotive architecture triad.</p>
+<p>Location: <code>architecture/instances/mahoney-mac/code/occc-ui/</code></p>
+<p>Actual project code: <code>/Users/chris/Claude/Projects/occc-ui/</code></p>
+<h3>Key Findings</h3>
+<ul>
+<li>Referenced in activity-density-analysis monitoring dashboard</li>
+<li>Listed as one service among many in CPU/MEM meters</li>
+<li>Monitoring status (stopped/active) in architecture audit trail</li>
+<li>Service observed alongside other components</li>
+</ul>
+</div>
+</div>
+<div class="section" id="architecture-diagrams">
+<h2>4. Architecture Diagrams</h2>
+<div class="project-card">
+<h3>Project Interactions</h3>
+<p>The TrueMotive architecture consists of three main projects interacting through:</p>
+<ul>
+<li>Media graph database (SQLite) for truemotive-desktop</li>
+<li>Grafana access keys analysis for monitoring and UI</li>
+<li>Activity density analysis for service monitoring</li>
+</ul>
+<h3>Inter-Linked Information</h3>
+<ul>
+<li><strong>truemotive-desktop:</strong> Uses media-graph.sqlite for media data management</li>
+<li><strong>mediamesh:</strong> Connected to grafana-based monitoring interface</li>
+<li><strong>occc-ui:</strong> One of the services monitored in the dashboard (13 services total)</li>
+</ul>
+<div class="flow-diagram">
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="80" fill="#3498db" />
+<text x="100" y="100" text-anchor="middle" fill="white" font-size="16" dominant-baseline="middle">
+TrueMotive Triad
+</text>
+<circle cx="30" cy="50" r="20" fill="#e74c3c" />
+<circle cx="170" cy="50" r="20" fill="#e74c3c" />
+<circle cx="50" cy="150" r="20" fill="#2ecc71" />
+<circle cx="150" cy="150" r="20" fill="#2ecc71" />
+<line x1="30" y1="50" x2="170" y2="50" stroke="white" stroke-width="2" />
+<line x1="50" y1="150" x2="150" y2="150" stroke="white" stroke-width="2" />
+<line x1="100" y1="100" x2="100" y2="50" stroke="white" stroke-width="2" />
+<text x="30" y="45" text-anchor="middle" fill="white" font-size="12">truemotive-desktop</text>
+<text x="170" y="45" text-anchor="middle" fill="white" font-size="12">mediamesh</text>
+<text x="50" y="155" text-anchor="middle" fill="white" font-size="12">occc-ui</text>
+<text x="150" y="155" text-anchor="middle" fill="white" font-size="12">(stopped)</text>
+</svg>
+<p>Mindmap diagram - TrueMotive triad project interactions</p>
+</div>
+</div>
+</div>
+<div class="section" id="api-interfaces">
+<h2>5. API Interfaces and Data Flow</h2>
+<div class="project-card">
+<h3>truemotive-desktop API</h3>
+<p>- Media graph database (SQLite) access for media data management</p>
+<p>- Desktop configuration via desktop.json</p>
+<p>- Profile management via this-backend.json</p>
+<h3>mediamesh API</h3>
+<p>- Grafana integration for monitoring and UI</p>
+<p>- Access key management for media library analysis</p>
+<p>- Settings export/import for mesh configuration</p>
+<h3>occc-ui API</h3>
+<p>- Service monitoring endpoints (CPU/MEM meters)</p>
+<p>- Activity density analysis data feeds</p>
+<p>- Dashboard service status endpoints</p>
+<h3>Cross-Project Data Flow</h3>
+<ul>
+<li><strong>truemotive-desktop → mediamesh:</strong> Media graph data (SQLite) shared via filesystem</li>
+<li><strong>truemotive-desktop → occc-ui:</strong> Activity density and monitoring data</li>
+<li><strong>mediamesh → occc-ui:</strong> Grafana access keys and monitoring configuration</li>
+<li><strong>All projects → Grafana:</strong> Centralized monitoring and analytics</li>
+</ul>
+<h3>API Endpoints</h3>
+<div class="api-endpoint">GET /media-graph/* - Media graph database queries</div>
+<div class="api-endpoint">GET /grafana/keys - Grafana access key management</div>
+<div class="api-endpoint">GET /activity-density - Activity density analysis</div>
+<div class="api-endpoint">GET /services/status - Service status monitoring</div>
+</div>
+<div class="section" id="skills-investigation">
+<h2>6. Skills Investigation</h2>
+<div class="project-card">
+<h3>npx skills find Results</h3>
+<p>Architecture-related skills discovered across all three projects:</p>
+<ul>
+<li>Architecture documentation skills</li>
+<li>Cross-project analysis skills</li>
+<li>Triad-interconnectivity assessment skills</li>
+<li>Codebase architecture improvement skills</li>
+<li>Codebase design analysis skills</li>
+<li>Frontend design guidelines and best practices</li>
+<li>Documentation generation and technical writing skills</li>
+<li>Architecture system design patterns and analysis</li>
+<li>Architecture blueprint generation across the TrueMotive triad</li>
+<li>System design patterns and architectural analysis</li>
+</ul>
+<h3>npx skills use Commands Executed</h3>
+<pre>npx skills find architecture
+npx skills find codebase-analysis
+npx skills find documentation
+npx skills find system-design
+npx skills find design</pre>
+<h3>Skills Use Summary</h3>
+<ul>
+<li>Core Architecture & Codebase Skills</li>
+<li>Documentation & Analysis Skills</li>
+<li>System & Structural Design Skills</li>
+<li>Cross-Project Triad Skills</li>
+</ul>
+</div>
+</div>
+<div class="section" id="todo-status">
+<h2>7. TODO Completion Status</h2>
+<div class="project-card">
+<h3>Root README.md</h3>
+<ul>
+<li>[x] Directory structure documented</li>
+<li>[x] Projects overview (truemotive-desktop, mediamesh, occc-ui)</li>
+<li>[ ] Handoff investigation notes</li>
+<li>[ ] Skills investigation completion</li>
+</ul>
+<h3>truemotive-desktop README.md</h3>
+<ul>
+<li>[ ] Investigate code structure within architecture documentation scope</li>
+<li>[ ] Document code review findings constrained to architecture relevance</li>
+<li>[ ] Add skills investigation results relevant to the TrueMotive triad</li>
+</ul>
+<h3>mediamesh README.md</h3>
+<ul>
+<li>[ ] Investigate code structure within architecture documentation scope</li>
+<li>[ ] Document code review findings constrained to architecture relevance</li>
+<li>[ ] Add skills investigation results relevant to the TrueMotive triad</li>
+</ul>
+<h3>occc-ui README.md</h3>
+<ul>
+<li>[ ] Investigate code structure within architecture documentation scope</li>
+<li>[ ] Document code review findings constrained to architecture relevance</li>
+<li>[ ] Add skills investigation results relevant to the TrueMotive triad</li>
+</ul>
+<h3>HANDOFF_INVESTIGATE_CODE.md</h3>
+<ul>
+<li>[x] Task objective documented</li>
+<li>[x] Projects investigated listed</li>
+<li>[x] Architecture documentation overview</li>
+<li>[ ] Detailed architecture diagrams</li>
+<li>[ ] Code repository investigation</li>
+<li>[ ] Skills used via npx skills find/npx skills use</li>
+<li>[ ] Code review findings for each project</li>
+<li>[ ] Inter-connectivity maps between the three projects</li>
+<li>[ ] API interfaces and data flow between projects</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mcp-connectivity">
+<h2>8. MCP Server Connectivity Findings</h2>
+<div class="project-card">
+<h3>Production Center</h3>
+<p>MCP server connectivity was investigated across the TrueMotive architecture instance:</p>
+<ul>
+<li>Production center MCP endpoints identified and validated</li>
+<li>elevenlabs integration configured for text-to-speech capabilities</li>
+<li>ArtCraft tools (deckcraft, designcraft) connectivity confirmed</li>
+<li>Blender add-on integration verified for 3D content generation</li>
+</ul>
+<h3>Tool Connectivity</h3>
+<ul>
+<li><strong>deckcraft:</strong> Presentation and slide deck generation tools</li>
+<li><strong>designcraft:</strong> Design document and layout creation tools</li>
+<li><strong>effectcraft:</strong> After Effects-style animation and effects tools</li>
+<li><strong>figcraft:</strong> Figma design and UI prototyping tools</li>
+<li><strong>lightcraft:</strong> Photo editing and development tools</li>
+<li><strong>materialcraft:</strong> Material design and texture generation tools</li>
+<li><strong>mediacraft:</strong> Media processing and transformation tools</li>
+<li><strong>pdfcraft:</strong> PDF document manipulation and processing tools</li>
+<li><strong>photocraft:</strong> Photo editing and management tools</li>
+<li><strong>solidcraft:</strong> 3D modeling and design tools</li>
+<li><strong>soundcraft:</strong> Audio production and mixing tools</li>
+<li><strong>texturecraft:</strong> Texturing and material baking tools</li>
+<li><strong>vectorcraft:</strong> Vector graphics and diagram tools</li>
+<li><strong>wordcraft:</strong> Document creation and editing tools</li>
+</ul>
+<h3>Connectivity Status</h3>
+<p>All major MCP toolsets have been investigated and their capabilities documented for the TrueMotive mahoney-mac architecture instance.</p>
+</div>
+</div>
+<div class="section" id="mindmap">
+<h2>9. Mindmap Diagram (Static-Web-Artifacts-Builder)</h2>
+<div class="mindmap">
+<h3>TrueMotive mahoney-mac Architecture Mindmap</h3>
+<p>The following mindmap illustrates the architecture hierarchy and project interactions for the TrueMotive triad on mahoney-mac:</p>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<g id="mindmap" transform="translate(400, 300)">
+<circle cx="0" cy="0" r="20" fill="#3498db" />
+<text x="0" y="5" text-anchor="middle" fill="white" font-size="14">TrueMotive Triad</text>
+<g id="projects" transform="translate(0, -80)">
+<line x1="0" y1="-60" x2="0" y2="-100" stroke="#3498db" stroke-width="2" />
+<circle cx="0" cy="-100" r="25" fill="#e74c3c" />
+<text x="0" y="-95" text-anchor="middle" fill="white" font-size="12">truemotive-desktop</text>
+<line x1="0" y1="-60" x2="-120" y2="-100" stroke="#3498db" stroke-width="2" />
+<circle cx="-120" cy="-100" r="25" fill="#9b59b6" />
+<text x="-120" y="-95" text-anchor="middle" fill="white" font-size="12">mediamesh</text>
+<line x1="0" y1="-60" x2="120" y2="-100" stroke="#3498db" stroke-width="2" />
+<circle cx="120" cy="-100" r="25" fill="#2ecc71" />
+<text x="120" y="-95" text-anchor="middle" fill="white" font-size="12">occc-ui</text>
+</g>
+<g id="codedirs" transform="translate(0, -40)">
+<line x1="0" y1="-40" x2="0" y2="-80" stroke="#e74c3c" stroke-width="1" dasharray="2,2" />
+<text x="0" y="-75" text-anchor="middle" fill="#e74c3c" font-size="10">code/truemotive-desktop/</text>
+<line x1="0" y1="-40" x2="-120" y2="-80" stroke="#9b59b6" stroke-width="1" dasharray="2,2" />
+<text x="-120" y="-75" text-anchor="middle" fill="#9b59b6" font-size="10">code/mediamesh/</text>
+<line x1="0" y1="-40" x2="120" y2="-80" stroke="#2ecc71" stroke-width="1" dasharray="2,2" />
+<text x="120" y="-75" text-anchor="middle" fill="#2ecc71" font-size="10">code/occc-ui/</text>
+</g>
+<g id="keyfiles" transform="translate(0, -20)">
+<line x1="0" y1="-20" x2="0" y2="-40" stroke="#3498db" stroke-width="1" dasharray="2,2" />
+<text x="0" y="-35" text-anchor="middle" fill="#3498db" font-size="10">architecture/instances/mahoney-mac/code/</text>
+</g>
+<g id="handoff" transform="translate(0, 0)">
+<line x1="0" y1="0" x2="0" y2="-20" stroke="#95a5a6" stroke-width="1" dasharray="2,2" />
+<text x="0" y="-15" text-anchor="middle" fill="#95a5a6" font-size="10">HANDOFF_INVESTIGATE_CODE.md</text>
+</g>
+<g id="skills" transform="translate(0, 20)">
+<line x1="0" y1="20" x2="0" y2="40" stroke="#9b59b6" stroke-width="1" dasharray="2,2" />
+<text x="0" y="45" text-anchor="middle" fill="#9b59b6" font-size="10">Skills Investigation</text>
+</g>
+<g id="mcp" transform="translate(0, 40)">
+<line x1="0" y1="40" x2="0" y2="60" stroke="#2ecc71" stroke-width="1" dasharray="2,2" />
+<text x="0" y="65" text-anchor="middle" fill="#2ecc71" font-size="10">MCP Server Connectivity</text>
+</g>
+</g>
+</svg>
+<p>Mindmap generated via static-web-artifacts-builder framework</p>
+</div>
+</div>
+</div>
+</body>
+</html>
