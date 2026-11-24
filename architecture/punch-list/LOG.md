@@ -2,7 +2,14 @@
 
 Newest first. One entry per cell you change in [MATRIX.md](MATRIX.md): row, instance, result, the command, and a short output excerpt. No secrets.
 
-## 2026-11-24
+## 2026-11-24 (evening) — handoff state
+
+- truemotive-desktop: PR #191 (Release v2.8.2) merged, tag `v2.8.2-beta` pushed on `d62c01dc` (plain git tag; there is no Jenkins build, only a Jenkinsfile). PR #192 (Builder Graph v3 package, `apps/builder-v3`) merged at `917e0f77`. `main` is now 2.8.2 plus builder-v3.
+- Both hosts still run 2.8.2 from release commit `ea67e119`; they have not been moved to `d62c01dc` / the tag or rebuilt with builder-v3 (nothing serves it yet).
+- New channel on the mac instance: `example-test-signal` (folder Examples): `video.testsrc` + 440 Hz `sine` muxed, HLS at `/hls/example-test-signal/index.m3u8`. Saved, compiles, **not started**. Not on turbo.
+- Finding: the channel page's existing Graph tab embeds the MediaMesh `web` Builder from the host profile's web origin (`graphAvailability`), which cannot work behind the single front door. Serving builder-v3 from TMD at `/builder/` fixes that.
+- Next (agreed): (A) serve builder-v3 at `/builder/` from TMD (Dockerfile builds `@tmd/builder-v3`, server serves its `dist/index.html`, ChannelPage Graph tab embeds `/builder/?channel=<id>`); remove the old `graph3` tab; remove the out-of-date non-built sample channels (`sample`, `mix-1`..`mix-5`) in mediamesh; web-client path refactor for E3–E7; close UI/control ports (F); bring up helpy. Worktree for A: `~/Claude/TrueMotive/worktrees/tmd-builder-embed` (clean, at `origin/main`).
+
 
 **mahoney-mac (dev), front door live**
 - Real checkout moved from `helpy-close-occc-ui-port` to `main` @ `1d531f9`. Uncommitted edits stashed ("pre-edge 2026-11-24"): `mediamtx/mediamtx.yml` had been replaced by an all-commented reference file (it would have removed `api: yes` and the healthcheck endpoint), plus `package-lock.json` and `web/package.json`. The branch keeps its 2 helpy-overlay commits.

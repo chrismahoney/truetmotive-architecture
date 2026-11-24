@@ -10,8 +10,8 @@ Last updated: 2026-11-24 (turbo-1 front door live). Update a cell only with evid
 
 | Instance | Environment | Done | Failing | Not checked | Blockers |
 |---|---|---|---|---|---|
-| turbo-1 | prod | 25 | 2 | 13 | E3–E7 need the web client path refactor; v2.8.2 tag awaits Jenkins |
-| mahoney-mac | dev | 25 | 0 | 14 | E3–E7 need the web client path refactor; v2.8.2 tag awaits Jenkins |
+| turbo-1 | prod | 25 | 2 | 13 | E3–E7 need the web client path refactor; hosts to move to tag `v2.8.2-beta` |
+| mahoney-mac | dev | 25 | 0 | 14 | E3–E7 need the web client path refactor; hosts to move to tag `v2.8.2-beta` |
 | helpy | test | 0 | 0 | 40 | host offline, SSH timeout |
 
 ## A. Source and pins
@@ -20,7 +20,7 @@ Last updated: 2026-11-24 (turbo-1 front door live). Update a cell only with evid
 |---|---|---|:-:|:-:|:-:|:-:|
 | A1 | mediamesh is on the fixed `main` (listener and Postgres fixes merged) | `git log -1`, PR merged | ❌ branch only | ✅ `main` @ `1d531f9` | ✅ `main` @ `1d531f9` | ⬜ |
 | A2 | No uncommitted edits to tracked files | `git status --porcelain` is empty | ➖ | ✅ mediamesh clean (edits stashed); TMD built from clean worktree | ✅ edits stashed | ⬜ |
-| A3 | TMD built from the target tag `v2.8.2` | `/api/health` `version`; `git describe --tags` | ⛔ tag missing (ran v2.8.0) | 🟡 v2.8.2 running (release commit `ea67e119`); tag pending Jenkins | 🟡 v2.8.2 running (release commit `ea67e119`); tag pending Jenkins | ⬜ |
+| A3 | TMD built from the target tag `v2.8.2` | `/api/health` `version`; `git describe --tags` | ⛔ tag missing (ran v2.8.0) | 🟡 v2.8.2 running (release commit `ea67e119`); tag `v2.8.2-beta` exists; host not yet moved to it | 🟡 v2.8.2 running (release commit `ea67e119`); tag `v2.8.2-beta` exists; host not yet moved to it | ⬜ |
 | A4 | `.env` complete: `TMD_TOKEN`, `TMD_PROXY_SECRET` (32+ chars), `POSTGRES_PASSWORD`, edge settings | `scripts/check-env` (to write) or manual review | ⬜ | ✅ 2026-11-24 | ✅ | ⬜ |
 | A5 | Database and config backed up before any change | file exists and non-empty | ➖ | ✅ 2026-11-24 | ✅ volume tarballs | ⬜ |
 
