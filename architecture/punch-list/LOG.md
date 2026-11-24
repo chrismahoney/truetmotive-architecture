@@ -2,6 +2,40 @@
 
 Newest first. One entry per cell you change in [MATRIX.md](MATRIX.md): row, instance, result, the command, and a short output excerpt. No secrets.
 
+## 2026-11-24 (late) — sanity run and recovery on mahoney-mac
+
+Tool: `truemotive-instance-sanity` (`scripts/sanity.sh --host mahoney-mac.mastodon-adder.ts.net`, from the mediamesh checkout on `fix/loopback-ui-and-control-ports` @ `9a6e262`). Read-only; the recovery steps below are the only changes, and each was approved.
+
+**First run: Docker Desktop was stopped.** `H2` FAIL (no daemon, no `~/.docker/run/docker.sock`), `E1` FAIL (front door 502). Everything not needing Docker matched earlier evidence: `A4` pass, `D5` `:443` → `127.0.0.1:8880`, `D7` cert 45 days left (to 2027-01-09), `D6` extra serve entries `:8457`, `:9998`, `:9999`, `K5` disk 94%.
+
+**After starting Docker Desktop, the stack came back partly.**
+- `web`, `occc-ui`, `engine`, `mediamtx`, `spacecom` stayed `Exited (255)`: no `restart:` in `docker-compose.yml`, policy `no`. Tracked as TRU-29 (turbo-1 would do the same after a reboot).
+- `C2`/`C4` FAIL: `127.0.0.1:4715` refused. Compose config bound it, but `docker inspect` live ports were empty (Docker Desktop lost the forward on restart). The first version of `C4` passed this; it now requires the port to be present.
+- Fix: `docker restart mediamesh-truemotive-1` → `/api/health` `{"ok":true,"version":"2.8.2"}`, `docker port` shows `127.0.0.1:4715`. Then `docker compose up -d --no-build --no-deps` for `web occc-ui engine mediamtx`.
+- `spacecom` could not bind `127.0.0.1:8787`: a Cline hub dashboard (PID 10929) held it. Stopped it with Chris's approval, then started `spacecom`. Not restarted since; if it returns, use a port other than 8787.
+- `rist-receiver` and `rist-receiver-dante` crash-looped (`Name does not resolve: engine`) until the engine was up, then settled (known boot-order behaviour); `RestartCount` stays 20 until recreated.
+
+**Final run: 20 pass, 5 warn, 0 fail, 0 skip.** Warns: `A1` branch not `main` (TRU-8), `K5` disk 94%, `K2` x2 receiver restart counts, `D6` the three dev serve entries. No MATRIX cell changed: C2, C4, F1, F2, D5 and D7 were already ✅ for mahoney-mac and still hold.
+
+**F1/F2 reachability, new evidence.** The script now also connects to 8080, 5173, 8787, 8888 and 9997 on the tailnet name from this machine: nothing answers (confirms the loopback binding, not just the compose config).
+
+**Skill fixes made during this run** (in `truemotive-skillz`, not yet committed): a crashed or empty run no longer exits 0; checks skipped for lack of Docker are reported `SKIP`; `F1` reachability probe; `C4` requires the published port. Self-test `scripts/test-shims.sh`: 39 of 39 pass.
+
+## 2026-11-24 (night) — loopback ports on mahoney-mac
+
+**mahoney-mac, F1 ✅ F2 ✅** (loopback bindings; branch `fix/loopback-ui-and-control-ports` @ `9a6e262`, not pushed)
+- No channels were running (`list_channels`: all `running:false`), so recreating the engine interrupted nothing.
+- `docker-compose.yml`: `8080`, `5173`, `8787`, `8888` and mediamtx `9997` now `127.0.0.1:` prefixed. `docker compose -f docker-compose.yml -f docker-compose.edge.yml up -d --no-build --no-deps web occc-ui spacecom engine mediamtx`.
+- `docker ps`: web `127.0.0.1:8080`, occc-ui `127.0.0.1:5173`, spacecom `127.0.0.1:8787`, engine `127.0.0.1:8888`, mediamtx `127.0.0.1:9997`. Everything else on `0.0.0.0` is in the [public-media table](../system/04-media-plane.md#ports-that-stay-public-udptcp) (engine udp 9000/9100/9220–9222, mediamtx 1935/8189/8889/8890, ristd, rist receivers, livekit). Portainer `8000`/`9443` is outside this stack ([adjacent services](../system/07-adjacent-services.md)).
+- From the Mac's own tailnet address (`100.126.119.105`) ports 8080, 5173, 8787, 8888, 9997 → connection refused; on `127.0.0.1` → 200/200/200/404/404 (404 is the API root, `/publish/manifest` → 200). `https://mahoney-mac.mastodon-adder.ts.net/` and `/tv/` still 200. TMD `/api/health` → `2.8.2`; all stack containers healthy, 0 restarts.
+- **Side effect, not a regression of the stack:** the TMPC MCP server is configured as `http://mahoney-mac.mastodon-adder.ts.net:8888/mcp` (`~/.claude.json`), so it now fails with `ECONNREFUSED`. Needs a decision: point it at `http://127.0.0.1:8888/mcp` (works on this Mac only) or route `/mcp` through the front door with identity.
+
+**mahoney-mac, C5 ✅**: from `mediamesh-truemotive-1` (`node -e fetch`, the image has no `wget`): `http://occc-ui:80/` 200, `http://docker-proxy:2375/_ping` 200, `http://engine:8888/publish/manifest` 200. C3 left ⬜: this container's log carries no migration lines to cite.
+
+**turbo-1**: not touched. `ssh chris@turbo-1` → `Permission denied (publickey,password,keyboard-interactive)`; `ssh-add -l` shows no identities (the key used yesterday is not loaded). Tailscale lists it online.
+
+**helpy**: still offline (tailnet: last seen 11 h ago); `ssh chris@helpy` → `Operation timed out`. Planning only, see [helpy](../instances/helpy/README.md#plan).
+
 ## 2026-11-24 (evening) — handoff state
 
 - truemotive-desktop: PR #191 (Release v2.8.2) merged, tag `v2.8.2-beta` pushed on `d62c01dc` (plain git tag; there is no Jenkins build, only a Jenkinsfile). PR #192 (Builder Graph v3 package, `apps/builder-v3`) merged at `917e0f77`. `main` is now 2.8.2 plus builder-v3.

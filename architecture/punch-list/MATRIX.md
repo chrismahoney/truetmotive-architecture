@@ -4,14 +4,14 @@ An instance is **done** when every required row is ✅ on its host. Work one ins
 
 Legend: 🟡 passes, with a named follow-up · ✅ passed (date + evidence in the log below) · ❌ checked and failing · ⬜ not checked yet · ➖ not applicable · ⛔ blocked (see notes). The **Clean room** column is the mahoney-mac throwaway stack (`mmaudit`), which proves a design before it touches a real host.
 
-Last updated: 2026-11-24 (turbo-1 front door live). Update a cell only with evidence: put the command output summary and date in [LOG.md](LOG.md).
+Last updated: 2026-11-24 (mahoney-mac F1/F2 closed; turbo-1 SSH key not loaded, helpy still offline). Update a cell only with evidence: put the command output summary and date in [LOG.md](LOG.md).
 
 ## Where we are
 
 | Instance | Environment | Done | Failing | Not checked | Blockers |
 |---|---|---|---|---|---|
 | turbo-1 | prod | 25 | 2 | 13 | E3–E7 need the web client path refactor; hosts to move to tag `v2.8.2-beta` |
-| mahoney-mac | dev | 25 | 0 | 14 | E3–E7 need the web client path refactor; hosts to move to tag `v2.8.2-beta` |
+| mahoney-mac | dev | 28 | 0 | 11 | E3–E7 need the web client path refactor; host to move to tag `v2.8.2-beta`; F change not yet merged |
 | helpy | test | 0 | 0 | 40 | host offline, SSH timeout |
 
 ## A. Source and pins
@@ -42,7 +42,7 @@ Last updated: 2026-11-24 (turbo-1 front door live). Update a cell only with evid
 | C2 | `/api/health` is ok on `127.0.0.1:4715` with the pinned version | `curl -s 127.0.0.1:4715/api/health` | ✅ (v2.8.0) | ✅ v2.8.0 | ✅ v2.8.2 | ⬜ |
 | C3 | Migrations applied | TMD log | ✅ 001–010 | ⬜ | ⬜ | ⬜ |
 | C4 | Listeners correct: main `127.0.0.1:4712`, token `4715`, proxy `4716` **not published** | `docker port`, `TMD_HOST/PORT` | ⬜ | ✅ only `127.0.0.1:4715` | ✅ only `127.0.0.1:4715` | ⬜ |
-| C5 | TMD reaches occc-ui, docker-proxy, engine | exec `wget` from the container | ✅ | ⬜ | ⬜ | ⬜ |
+| C5 | TMD reaches occc-ui, docker-proxy, engine | exec a request from the container (no `wget` in the image; use `node -e fetch`) | ✅ | ⬜ | ✅ 200 / 200 / 200 | ⬜ |
 
 ## D. Edge: front door, proxy, identity
 
@@ -81,11 +81,13 @@ Every row is proven from a tailnet peer through `https://<host>.mastodon-adder.t
 
 | # | Check | Proof | Clean room | turbo-1 | mahoney-mac | helpy |
 |---|---|---|:-:|:-:|:-:|:-:|
-| F1 | No UI or control port on `0.0.0.0` (web 8080, occc-ui 5173, spacecom 8787, engine 8888, …) | `docker ps` ports vs the [media table](../system/04-media-plane.md#ports-that-stay-public-udptcp) | ⬜ | ❌ 8080, 5173, 8787, 8888, 9997 | ⬜ | ⬜ |
-| F2 | mediamtx control API (`9997`) is loopback only | `docker port` | ⬜ | ❌ | ⬜ | ⬜ |
+| F1 | No UI or control port on `0.0.0.0` (web 8080, occc-ui 5173, spacecom 8787, engine 8888, …) | `docker ps` ports vs the [media table](../system/04-media-plane.md#ports-that-stay-public-udptcp) | ⬜ | ❌ 8080, 5173, 8787, 8888, 9997 | ✅ 2026-11-24, branch only (see note) | ⬜ |
+| F2 | mediamtx control API (`9997`) is loopback only | `docker port` | ⬜ | ❌ | ✅ `127.0.0.1:9997` | ⬜ |
 | F3 | Media ports reachable from outside (RIST, SRT, RTMP, WebRTC) | `nc -u`, `ffprobe` per protocol | ⬜ | ⬜ | ⬜ | ⬜ |
 
 *F is required but does not block the first pass on turbo-1 ([agreed sequencing](../adr/0006-pin-released-tmd-tags-never-branches.md)).*
+
+**Gate before closing F on turbo-1: inventory the direct consumers first.** Closing the ports on mahoney-mac cut off one the repo did not know about: the TMPC MCP server in `~/.claude.json` is `http://mahoney-mac.mastodon-adder.ts.net:8888/mcp`, a direct tailnet hit on the engine. Anything else on a peer that uses `host:8080`, `:5173`, `:8787`, `:8888` or `:9997` breaks the same way. The engine's `/mcp` was also reachable by every tailnet device with no identity check, which is the exposure F exists to close; the proper route is through the front door (TMD, with identity), not a reopened port. Mahoney-mac's change is on branch `fix/loopback-ui-and-control-ports` (`9a6e262`), not yet pushed or merged.
 
 ## G. Docs and recovery
 
