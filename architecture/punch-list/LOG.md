@@ -2,6 +2,42 @@
 
 Newest first. One entry per cell you change in [MATRIX.md](MATRIX.md): row, instance, result, the command, and a short output excerpt. No secrets.
 
+## 2026-11-24 (late night) — mahoney-mac: `/mcp` through the front door (ADR 0007)
+
+**mahoney-mac, `/mcp` ✅** (mediamesh branch `feat/edge-mcp-route`, PR #86, not merged)
+- Decision: any registered tailnet device may use `/mcp`; no edge allowlist ([ADR 0007](../adr/0007-route-the-mcp-endpoint-through-the-front-door.md)).
+- `docker-compose.edge.yml`: `engine` also on the `edge` network; `edge/proxy-host.json`: location `/mcp` → `engine:8888`. `docker compose … up -d --no-build --no-deps engine` (healthy), `scripts/edge.sh provision` → "updated proxy host", `nginx -t` OK.
+- From this Mac over its tailnet name: `POST https://mahoney-mac.mastodon-adder.ts.net/mcp` `initialize` → `mediamesh 2.0.0`; `tools/list` → 64 tools. `/` 200, `/tv/` 200, `/api/session` still resolves the caller.
+- `docker port mediamesh-engine-1 8888` → `127.0.0.1:8888`; `http://100.126.119.105:8888/mcp` → connection refused.
+- Client `~/.claude.json` now `https://mahoney-mac.mastodon-adder.ts.net/mcp` (was loopback, interim). Not yet tested from a different tailnet device: turbo-1 SSH key not loaded.
+
+## 2026-11-24 (late night) — mahoney-mac: PRs #84 and #85 merged, MCP restored
+
+**mahoney-mac, A1 ✅, F1 ✅, F2 ✅, K4 ✅** (no new MATRIX cell; F1/F2 were already ✅ from the branch, now from `main`)
+- mediamesh PR #84 (loopback ports) merged as `d0a1050`; PR #85 (restart policy for `web`, `occc-ui`, `engine`, `mediamtx`, `spacecom`) merged as `11d9d70`. Checkout moved from `fix/loopback-ui-and-control-ports` to `main` @ `11d9d70`.
+- `docker compose -f docker-compose.yml -f docker-compose.edge.yml up -d --no-build --no-deps web occc-ui spacecom engine mediamtx`: all five healthy within 15 s.
+- `docker inspect` over every running container: `restart=unless-stopped` on all 19 stack containers, `always` on Portainer (outside the stack). `rist-receiver` and `rist-receiver-dante` still show `RestartCount 20` from the earlier boot-order loop (recreate to reset).
+- Ports: web `127.0.0.1:8080`, occc-ui `127.0.0.1:5173`, spacecom `127.0.0.1:8787`, engine `127.0.0.1:8888`. `/api/health` → 2.8.2; engine `/publish/manifest` 200; `https://mahoney-mac.mastodon-adder.ts.net/tv/` 200.
+
+**TMPC MCP, interim fix.** `~/.claude.json` entry `truemotive-master-control-program` now `http://127.0.0.1:8888/mcp` (was the tailnet name on :8888, refused after F). POST `initialize` → `mediamesh 2.0.0`; `/mcp` reconnected in Claude Code; `get_publish_manifest` returned `channels: []` (nothing running). Works on this Mac only. The route for other peers is TRU-7; the per-instance requirement is TRU-30. turbo-1's F gate (TRU-16) must not close its ports before that route exists.
+
+## 2026-11-24 (late) — turbo-1: TMD crash loop found and fixed
+
+Tool: `truemotive-instance-sanity` over ssh (`chris@turbo-1.mastodon-adder.ts.net`, key `~/.ssh/id_rsa_ish`, checkout `/home/chris/src/mediamesh`). Host: Ubuntu 24.04.5, Docker 29.9.2.
+
+**Found (prod was out of service):** `mediamesh-truemotive-1` `Restarting (2)`, `RestartCount=57`, `127.0.0.1:4715` not published, front door hung (`GET /` timed out, 0 bytes). Log: `Syntax error: end of file unexpected (expecting "}")` on every start. The container (created 22:22Z) carried a start command split on spaces into separate arguments (`["sh","-c","[ -n \"$TMD_TOKEN\" ] || { echo TMD_TOKEN","is","not",...]`), so `sh -c` got a broken fragment. The image's own default command is correct (same image id `be047528db7f` as `mediamesh-truemotive:latest`), and the rendered compose has no `command:` for `truemotive`. **What created the container with that command is not known**; it was not the repo's compose. Checkout was clean on `main` @ `1d531f9`.
+
+**Fix (approved by Chris):** `docker compose up -d --no-build --no-deps --force-recreate truemotive` from the checkout. Only TMD recreated; Postgres and the other services untouched.
+- `/api/health` → `{"ok":true,"version":"2.8.2","profile":null}` within ~10 s; `RestartCount=0`; command now the image default; `docker port` → `127.0.0.1:4715`.
+- From this Mac: `GET /` 200, `GET /tv/` 200.
+- Re-run of the check: 22 pass, 3 warn, 3 fail. Remaining findings are the known ones below.
+
+**Still open on turbo-1** (unchanged by this fix):
+- `F1`/`F2`: web 8080, occc-ui 5173, spacecom 8787, engine 8888, mediamtx 9997 published on `0.0.0.0` and `[::]`. New: the reachability probe from the tailnet confirms all five answer (TRU-16).
+- `K4`: occc-ui, web, engine, spacecom, mediamtx have no restart policy (TRU-29).
+- `K2`: rist-receiver and rist-receiver-dante `RestartCount=1`.
+- `C1` needs the 10-minute recheck of 0 restarts (TMD recreated about 23:20Z).
+
 ## 2026-11-24 (late) — sanity run and recovery on mahoney-mac
 
 Tool: `truemotive-instance-sanity` (`scripts/sanity.sh --host mahoney-mac.mastodon-adder.ts.net`, from the mediamesh checkout on `fix/loopback-ui-and-control-ports` @ `9a6e262`). Read-only; the recovery steps below are the only changes, and each was approved.

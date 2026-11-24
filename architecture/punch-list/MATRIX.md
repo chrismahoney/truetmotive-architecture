@@ -11,7 +11,7 @@ Last updated: 2026-11-24 (mahoney-mac F1/F2 closed; turbo-1 SSH key not loaded, 
 | Instance | Environment | Done | Failing | Not checked | Blockers |
 |---|---|---|---|---|---|
 | turbo-1 | prod | 25 | 2 | 13 | E3–E7 need the web client path refactor; hosts to move to tag `v2.8.2-beta` |
-| mahoney-mac | dev | 28 | 0 | 11 | E3–E7 need the web client path refactor; host to move to tag `v2.8.2-beta`; F change not yet merged |
+| mahoney-mac | dev | 28 | 0 | 11 | E3–E7 need the web client path refactor; host to move to tag `v2.8.2-beta`; TMPC MCP only reachable on this Mac (TRU-7, TRU-30) |
 | helpy | test | 0 | 0 | 40 | host offline, SSH timeout |
 
 ## A. Source and pins

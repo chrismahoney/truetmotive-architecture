@@ -67,6 +67,25 @@ Document available skills and their relevance to each project, constrained to
 the TrueMotive architecture investigation scope.
 
 ### Skills to investigate via `npx skills find` and `npx skills use`:
+## TrueMotive mahoney‑mac Progress TUI
+
+A tiny terminal‑UI that shows the current progress of the **mahoney‑mac (dev)** instance based on `architecture/punch-list/MATRIX.md`.
+
+- **Parses** `architecture/punch-list/MATRIX.md` and extracts Done / Failing / Not checked counts.
+- **Calculates** completion percentage and displays a progress bar.
+- Provides a **Textual** TUI (preferred) or a **curses** fallback.
+- Refreshes data every **30 seconds** (configurable).
+- Optional (skeleton) live fetch from Linear – currently falls back to matrix numbers.
+
+### Todo / Future work
+
+- [ ] Dynamically parse MATRIX.md instead of hard‑coding counts.
+- [ ] Integrate Linear API to fetch issue counts for the mahoney‑mac project.
+- [ ] Make refresh interval configurable via env var or config file.
+- [ ] Add custom colour theme / CSS.
+- [ ] Generalise script to support other instances (turbo‑1, helpy, etc.).
+- [ ] Add unit tests for the parser and percentage calculation.
+- [ ] Create Docker / CI integration to output the percentage as an annotation.
 
 - Skill 1: Architecture documentation skills
 - Skill 2: Cross-project analysis skills  

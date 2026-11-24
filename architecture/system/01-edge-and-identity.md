@@ -119,6 +119,7 @@ Rules that keep this from happening again:
 | `/mediamesh/` | `web:80` | MediaMesh UI | ⛔ see below |
 | `/spacecom/` | `spacecom:8787` | Socket.IO, needs websocket upgrade | ⛔ see below |
 | `/decisions/` | `decisions:10848` | own identity secret (`DECISIONS_PROXY_SECRET`) | ❓ base-path support unchecked |
+| `/mcp` | `engine:8888` (path unchanged) | TMPC MCP endpoint, Streamable HTTP; no edge allowlist, tailnet is the boundary ([ADR 0007](../adr/0007-route-the-mcp-endpoint-through-the-front-door.md)) | ✅ mahoney-mac 2026-11-24 |
 | `/hls/` | `engine:8888` | HLS output | ❓ |
 | `/whep/` | `mediamtx:8889` | WebRTC playback | ⛔ see below |
 
