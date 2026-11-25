@@ -42,3 +42,21 @@ When you dispatch subagents, record every run's usage from its completion notice
 - **When a task completes**, post its rows as a comment on its Linear issue. Linear has no token field, so a comment is the record.
 - **In the PR description**, add an "Agent usage" table with a row per task, a total, and the number of fix rounds.
 - Label the figures approximate: a resumed agent re-reads its context, so rows overlap and must not be summed as a bill. Agents cannot see the main session's own usage; take that from the session cost view.
+## Turbo-1 Documentation Pipeline
+
+**Task Dependency Chain:** e075a → 158c5 → b21ec → 40c27 → c29b9 → e05e8 → 24ecd
+
+**Auto-Review Settings:**
+- Enabled: true
+- Trigger: on markdown update push
+- Approvers: docs team
+
+**Dependency Chains:**
+- Each task depends on the preceding commit in the chain
+- Reversal or reordering requires full chain review
+
+**Factual-Only Constraints for Markdown Updates:**
+1. No speculative content – all claims must be verifiable
+2. No placeholder TODO text left unresolved in final docs
+3. Version identifiers must match actual committed revisions
+4. Chain order is immutable once merged
