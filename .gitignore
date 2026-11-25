@@ -1,2 +1,5 @@
 # Local skill links (symlinks into truemotive-skillz; absolute paths on one machine)
 .claude/skills/
+
+# Machine-specific disk usage report for mahoney-mac (TRU-34); regenerate it, do not commit it
+reports/MAHONEY_MAC_DISKUSAGE.md

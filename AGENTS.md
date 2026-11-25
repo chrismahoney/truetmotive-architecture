@@ -35,3 +35,10 @@ architecture/
 Information for future agents to extrapolate and capture more data beyond this task. 
 Include the task of creating the initial README.md at root with TODO placeholders 
 wherever the user asks for them.
+
+## Agent usage metrics
+
+When you dispatch subagents, record every run's usage from its completion notice (`subagent_tokens`, `tool_uses`, `duration_ms`) in the plan's ledger: one row each for task, role, tokens, tool calls and seconds. Fix rounds and re-reviews get their own rows.
+- **When a task completes**, post its rows as a comment on its Linear issue. Linear has no token field, so a comment is the record.
+- **In the PR description**, add an "Agent usage" table with a row per task, a total, and the number of fix rounds.
+- Label the figures approximate: a resumed agent re-reads its context, so rows overlap and must not be summed as a bill. Agents cannot see the main session's own usage; take that from the session cost view.

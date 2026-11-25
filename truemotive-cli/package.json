@@ -1,0 +1,19 @@
+{
+  "name": "truemotive-cli",
+  "version": "1.0.0",
+  "description": "Node-based CLI wrapper for the TrueMotive mahoney‑mac progress TUI",
+  "main": "index.js",
+  "bin": {
+    "truemotive-cli": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "true motive",
+    "tui",
+    "progress"
+  ],
+  "author": "",
+  "license": "MIT"
+}

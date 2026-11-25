@@ -120,10 +120,12 @@ Rules that keep this from happening again:
 | `/spacecom/` | `spacecom:8787` | Socket.IO, needs websocket upgrade | ⛔ see below |
 | `/decisions/` | `decisions:10848` | own identity secret (`DECISIONS_PROXY_SECRET`) | ❓ base-path support unchecked |
 | `/mcp` | `engine:8888` (path unchanged) | TMPC MCP endpoint, Streamable HTTP; no edge allowlist, tailnet is the boundary ([ADR 0007](../adr/0007-route-the-mcp-endpoint-through-the-front-door.md)) | ✅ mahoney-mac 2026-11-24 |
-| `/hls/` | `engine:8888` | HLS output | ❓ |
-| `/whep/` | `mediamtx:8889` | WebRTC playback | ⛔ see below |
+| `/hls/` | `engine:8888` (path unchanged) | HLS output; identity headers stripped. Unknown channel names get the engine's placeholder playlist (its behaviour, passed through) | ✅ mahoney-mac 2026-11-24 |
+| `/whep/` | `mediamtx:8889` (prefix stripped; the session `Location` is rewritten to `https://<host>/whep/…`) | WHEP signalling. Video itself is UDP 8189 and needs `MTX_WEBRTC_ADDITIONAL_HOSTS` in `.env` (the host's tailnet IP and name) or mediamtx offers only container IPs | ✅ route and playback mahoney-mac 2026-11-24; ⛔ the MediaMesh UI's own WHEP URL (host:port) until the client change |
 
 **Finding (2026-11-24): the MediaMesh web UI cannot sit behind path locations as it is.** `web/src/api.ts` builds its URLs from the page's host plus a fixed port: WHEP at `https://<host>:8446`, SpaceCom at `…:8445`, and the engine API at the baked-in `VITE_MEDIAMESH_URL` (`…:8443`). Those were Caddy's per-port HTTPS doors. With one front door there are only paths, so the client needs same-origin base paths (for example `/engine/`, `/spacecom/` with Socket.IO's `path` option, `/whep/`) or those services need their own front-door ports. This is a code change in mediamesh, not NPM configuration. Open decision in the [punch list notes](../punch-list/MATRIX.md).
+
+**Update (2026-11-24, TRU-5 phase 1).** `/hls/` and `/whep/` need no client change to be reachable, so they went first (mediamesh PRs #86 and #87). Two things surfaced. mediamtx's WHEP listener was configured on `:8189` (the UDP media port), so nothing listened on the published `:8889`; it is now `:8889`. And NPM's location blocks use a static `proxy_pass http://<name>:<port>`, which nginx resolves once at config load: recreating a routed container can leave its route on a dead IP until NPM reloads (apply a change by recreating the service first, then `scripts/edge.sh provision`, and reload NPM after any recreate). Remaining phases: `/decisions/` (base-path support unchecked), `/spacecom/` (Socket.IO path plus websocket upgrade), `/mediamesh/` (the client refactor: four host:port bases, pathname routing for seven pages, Vite base).
 
 A service gets a path only once it works under a prefix; until then it stays unexposed (loopback or internal).
 
