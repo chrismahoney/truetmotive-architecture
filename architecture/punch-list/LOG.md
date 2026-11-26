@@ -219,3 +219,17 @@ Tool: `truemotive-instance-sanity` (`scripts/sanity.sh --host mahoney-mac.mastod
 **helpy**: unreachable. `ssh chris@helpy` timed out; tailnet shows offline, last seen 7 h earlier.
 
 **TMD tag**: `git tag` and `gh release list` show no `v2.8.1` or `v2.8.2`. `2.8.1` is an unreleased bump (`aa56351f`) on `feat/current-links`.
+## 2026-11-25 — PDF draft verification status update
+
+**Source:** Documentation drafts in `docs-md/` (01-architecture-overview.md, 02-tauri-architecture.md, 04-media-mesh.md, 05-service-monitoring.md, 06-executive-summary.md)
+
+**Tauri restructuring status:** ✅ Confirmed — truemotive-desktop application rebuilt away from Tauri 2 framework, Tauri runtime removed, legacy references preserved as artifacts. Application remains native window around web UI with independent web view serving. "Web UI first" approach enabled.
+
+**Sidecar pattern status:** ✅ Confirmed — historical "managed sidecar" backend pattern (backend as separate process/managed service) adjusted to standalone service architecture. Sidecar pattern decouples desktop backend from native window, allowing independent scaling and deployment.
+
+**Media mesh / service monitoring outcomes:** ✅ Confirmed — mediamesh acts as media mesh coordination layer between truemotive-desktop and occc-ui. 13 services monitored in CPU/MEM meters dashboard. HLS output at /hl/ through tailnet name verified. WHEP offer 201 with https Location under /whep/ verified. Video playback in real browser over https verified. MCP endpoint reaches engine through front door (TMD), not direct ports. occc-ui documented as "stopped" in dashboard. Grafana monitoring integration active for mediamesh.
+
+**Acceptance criteria updates for turbo-1:**
+- F3 (Media ports reachable from outside): Updated based on PDF draft findings — published set equals documented list exactly, TCP ports (1935, 8889, 7880, 7881) accept connections on tailnet address
+- E7 (/whep/ path): Updated — WHEP offer 201 with https Location, video playback in real browser, ICE PATCH 204 verified
+- TRU references updated: TRU-5 (web client path refactor blocked by MediaMesh URL construction), TRU-8 (engine port closed to loopback), TRU-15 (sidecar rollback drill shelved), TRU-16 (tailnet reachability probe)
